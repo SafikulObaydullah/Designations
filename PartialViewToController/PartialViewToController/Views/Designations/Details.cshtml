@@ -1,0 +1,66 @@
+﻿@model PartialViewToController.Models.Designation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Designation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Basic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Basic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HRrate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HRrate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MARate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MARate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Convence)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Convence)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MobileBill)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MobileBill)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

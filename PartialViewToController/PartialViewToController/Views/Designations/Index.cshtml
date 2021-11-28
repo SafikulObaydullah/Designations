@@ -1,0 +1,122 @@
+﻿@model IEnumerable<PartialViewToController.Models.Designation>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .btn {
+        border-bottom-width: 15px;
+        border-bottom-style: solid;
+        border-bottom-color: red;
+    }
+
+        .btn:hover {
+            border-bottom-width: 15px;
+            border-bottom-style: solid;
+            border-bottom-color: #00ff90;
+        }
+</style>
+
+<center>
+    <h1>All Designations</h1>
+    <hr />
+</center>
+
+<div class="row">
+    <div class="col-md-12" style="display:none" id="adddiv">
+
+        @Html.Partial("_insertDesignation")
+    </div>
+    <div class="col-md-12" id="displaydiv">
+        <button id="btnnew" style="float:right" title="Add New Item" class="btn-primary">
+            <i class="glyphicon glyphicon-plus"></i>
+        </button>
+
+
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <h2>@item.Name</h2>
+                <p>@item.Basic</p>
+                <p>@item.HRrate</p>
+                @*<p>
+                    @Html.ActionLink("Edit","Edit","Designations",new { @id = item.Id },new{@class = "btn btn-primary"})
+                    @Html.ActionLink("Delete","Delete","Designations",new { @id = item.Id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Details","Details","Designations",new { @id = item.Id }, new { @class = "btn btn-primary" })
+                </p>*@
+            <p>
+                <input type="button" value="Edit" id="btnedit" onclick="EditData(@item.Id)" class="btn btn-primary" />
+                <input type="button" value="Delete" onclick="DeleteData(@item.Id)" class="btn btn-primary" />
+                @Html.ActionLink("Details", "Details", "Designations", new { @id = item.Id }, new { @class = "btn btn-primary" })
+
+            </p>
+
+
+            </div>
+        }
+    </div>
+ </div>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#btnnew").click(function () {
+                $("#adddiv").show();
+                $("#displaydiv").hide();
+                $("#btnsave").val("Update");
+            })
+        })
+        function cleardata() {
+            $("#id").val("")
+            $("#name").val("")
+            $("#Convence").val("")
+            $("#MA").val("")
+            $("HR").val("")
+            $("#mobile").val("")
+            $("#Basic").val("")
+
+            $("#adddiv").hide();
+            $("#displaydiv").show();
+            $("#btnsave").val("Save")
+        }
+        function EditData(id) {
+            $.ajax({
+                url: "/Designations/Edit/" + id,
+                type: "JSON",
+                method: "GET",
+                success: function (data) {
+                    console.log(data)
+                    $("#id").val(data.Id)
+                    $("#name").val(data.Name)
+                    $("#Convence").val(data.Convence)
+                    $("#MA").val(data.MARate)
+                    $("#HR").val(data.HRrate)
+                    $("#mobile").val(data.MobileBill)
+                    $("#Basic").val(data.Basic)
+
+                    $("#adddiv").show();
+                    $("#displaydiv").hide();
+                    $("#btnsave").val("Update")
+                },
+                error: function (err) {
+                    console.log(err.responseText)
+                }
+            })
+        }//edit
+        function DeleteData(id) {
+            $.ajax({
+                url: "/Designations/Delete/" + id,
+                type: "JSON",
+                method: "GET",
+                success: function (data) {
+
+                },
+                error: function (err) {
+                    console.log(err.responseText)
+                }
+            })
+        }//delete
+        
+    </script>
+    }
+
+

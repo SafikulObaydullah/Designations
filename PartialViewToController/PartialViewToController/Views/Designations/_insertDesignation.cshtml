@@ -1,0 +1,31 @@
+﻿@using (Html.BeginForm("Save", "Designations", FormMethod.Post))
+{
+    <div class="form-group">
+        <label class="control-label">Name</label>
+        <input type="text" name="name" id="name" placeholder="Designation name" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">Basic</label>
+        <input type="number" name="Basic" id="Basic" placeholder="Basic" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">House Rent</label>
+        <input type="number" name="HR" id="HR" placeholder="House Rent" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">Convence</label>
+        <input type="number" name="Convence" id="Convence" placeholder="Convence" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">Medical Allownce</label>
+        <input type="number" name="MA" id="MA" placeholder="Medical Allownce" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">Mobile Biill</label>
+        <input type="number" name="mobile" id="mobile" placeholder="Mobile Biill" />
+    </div>
+    <div class="form-group">
+        <input type="number" name="id" id="id" />
+        <input type="submit" value="Save" id="btnsave" />
+    </div>
+}
